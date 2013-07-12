@@ -3,7 +3,7 @@
 usage example:
   `@Path("/findpathslen/{id1}/{id2}/{len}/{count}")`
 
-Executing "/findpaths/findpaths/findpathslen/102/289/3/2" gets me up to two paths of length 3 between the two node ids.
+Executing "/findpaths/findpaths/findpathslen/102/289/3/2" gets me up to two directed paths of length 3 between the two node ids (102, 289).
 
 ```
 [
