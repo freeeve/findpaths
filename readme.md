@@ -1,4 +1,4 @@
-## A simple neo4j unmanaged extension to find paths between two points
+## A simple neo4j unmanaged extension to find paths between two nodes
 
 usage example:
   `@Path("/findpathslen/{id1}/{id2}/{len}/{count}")`
