@@ -3,7 +3,57 @@
 usage example:
   `@Path("/findpathslen/{id1}/{id2}/{len}/{count}")`
 
-Executing "/findpaths/findpaths/findpathslen/102/289/3/2" gets me up to 2 relationships for the length 3 paths.
+Executing "/findpaths/findpaths/findpathslen/102/289/3/2" gets me up to two paths of length 3 between the two node ids.
+
+```
+[
+   [
+      {
+         "id":39812,
+         "relType":"f",
+         "props":{
+
+         }
+      },
+      {
+         "id":36171,
+         "relType":"f",
+         "props":{
+
+         }
+      },
+      {
+         "id":56895,
+         "relType":"f",
+         "props":{
+
+         }
+      }
+   ],
+   [
+      {
+         "id":39812,
+         "relType":"f",
+         "props":{
+
+         }
+      },
+      {
+         "id":36171,
+         "relType":"f",
+         "props":{
+
+         }
+      },
+      {
+         "id":27120,
+         "relType":"f",
+         "props":{
+
+         }
+      }
+   ]
+]```
 
 ### configuration
 
