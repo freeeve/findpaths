@@ -28,53 +28,26 @@ class findpaths {
     val node2 = db.getNodeById(id2)
     val pathFinder = GraphAlgoFactory.pathsWithLength(Traversal.pathExpanderForAllTypes(Direction.OUTGOING), len) 
     val pathIterator = pathFinder.findAllPaths(node1,node2).asScala
-    Response.ok(compact(render(decompose(pathIterator.take(count).map(_.relationships.asScala.map(text(_)))))), MediaType.APPLICATION_JSON).build()
+    val jsonMap = pathIterator.take(count).map(_.relationships.asScala.map(obj(_)))
+    Response.ok(compact(render(decompose(jsonMap))), MediaType.APPLICATION_JSON).build()
   }
 
-  def text(value:Any):String = value match {
-    case Nil => "<null>"
+  def obj(value:Any):Any = value match {
+    case Nil => null
     case s:String => "\"" + s + "\""
-    case n:Node => n.toString + props(n)
-    case r:Relationship => ":" + r.getType.name + "[" + r.getId + "] " + props(r)
-    case i:java.lang.Iterable[Any] => formatIterator(i.asScala.iterator)
-    case a:Array[Any] => formatArray(a)
+    case n:Node => Map("id" -> n.getId, "props" -> props(n))
+    case r:Relationship => Map("id" -> r.getId, "relType" -> r.getType.name, "props" -> props(r))
+    case i:java.lang.Iterable[Any] => i.asScala.map(obj(_))
+    case a:Array[Any] => a.map(obj(_))
     case _ => value.toString
-  } 
-    
+  }
+
   def props(pc:PropertyContainer) = {
-    val sb = new collection.mutable.StringBuilder("{")
-    val keys = pc.getPropertyKeys.iterator.asScala
-    while (keys.hasNext) {
-      val prop = keys.next()
-      sb.append(prop).append(":")
-      val o = pc.getProperty(prop)
-      sb.append(text(o))
-      if (keys.hasNext) {
-        sb.append(",")
-      }
+    var m = Map[String,Any]()
+    for (prop <- pc.getPropertyKeys.iterator.asScala) {
+      m = m + (prop -> pc.getProperty(prop)) 
     }
-    sb.append("}")
-    sb.toString
+    m
   }
 
-  def formatArray(array:Array[Any]) = {
-    val sb = new collection.mutable.StringBuilder("[")
-    array.zipWithIndex.foreach{ case (e, idx) => 
-      sb.append(text(e))
-      if(idx < array.length - 1) sb.append(",")
-    }
-    sb.toString
-  }
-
-  def formatIterator(it:Iterator[Any]) = {
-    val sb = new collection.mutable.StringBuilder("[")
-    while (it.hasNext) {
-      sb.append(text(it.next()));
-      if (it.hasNext) {
-        sb.append(",")
-      }
-    }
-    sb.append("]")
-    sb.toString
-  }
 }
