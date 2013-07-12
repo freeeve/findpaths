@@ -28,7 +28,7 @@ class findpaths {
     val node2 = db.getNodeById(id2)
     val pathFinder = GraphAlgoFactory.pathsWithLength(Traversal.pathExpanderForAllTypes(Direction.OUTGOING), len) 
     val pathIterator = pathFinder.findAllPaths(node1,node2).asScala
-    val jsonMap = pathIterator.take(count).map(_.relationships.asScala.map(obj(_)))
+    val jsonMap = pathIterator.take(count).map(_.iterator.asScala.map(obj(_)))
     Response.ok(compact(render(decompose(jsonMap))), MediaType.APPLICATION_JSON).build()
   }
 
