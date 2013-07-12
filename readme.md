@@ -9,6 +9,12 @@ Executing "/findpaths/findpaths/findpathslen/102/289/3/2" gets me up to two dire
 [
    [
       {
+         "id":102,
+         "props":{
+            "name":"102"
+         }
+      },
+      {
          "id":39812,
          "relType":"f",
          "props":{
@@ -16,10 +22,22 @@ Executing "/findpaths/findpaths/findpathslen/102/289/3/2" gets me up to two dire
          }
       },
       {
+         "id":65,
+         "props":{
+            "name":"65"
+         }
+      },
+      {
          "id":36171,
          "relType":"f",
          "props":{
 
+         }
+      },
+      {
+         "id":275,
+         "props":{
+            "name":"275"
          }
       },
       {
@@ -28,14 +46,32 @@ Executing "/findpaths/findpaths/findpathslen/102/289/3/2" gets me up to two dire
          "props":{
 
          }
+      },
+      {
+         "id":289,
+         "props":{
+            "name":"289"
+         }
       }
    ],
    [
+      {
+         "id":102,
+         "props":{
+            "name":"102"
+         }
+      },
       {
          "id":39812,
          "relType":"f",
          "props":{
 
+         }
+      },
+      {
+         "id":65,
+         "props":{
+            "name":"65"
          }
       },
       {
@@ -46,10 +82,22 @@ Executing "/findpaths/findpaths/findpathslen/102/289/3/2" gets me up to two dire
          }
       },
       {
+         "id":275,
+         "props":{
+            "name":"275"
+         }
+      },
+      {
          "id":27120,
          "relType":"f",
          "props":{
 
+         }
+      },
+      {
+         "id":289,
+         "props":{
+            "name":"289"
          }
       }
    ]
